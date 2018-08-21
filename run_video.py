@@ -23,7 +23,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='tf-pose-estimation Video')
     parser.add_argument('--video', type=str, default='/Users/tamersherif/Desktop/projects/tf-pose-estimation/videos/tug_chao.mp4')
     parser.add_argument('--resolution', type=str, default='432x368', help='network input resolution. default=432x368')
-    parser.add_argument('--model', type=str, default='mobilenet_thin', help='cmu / mobilenet_thin')
+    parser.add_argument('--model', type=str, default='cmu', help='cmu / mobilenet_thin')
     parser.add_argument('--show-process', type=bool, default=False,
                         help='for debug purpose, if enabled, speed for inference is dropped.')
     parser.add_argument('--showBG', type=bool, default=True, help='False to show skeleton only.')
@@ -49,8 +49,8 @@ if __name__ == '__main__':
 
         cv2.putText(image, "FPS: %f" % (1.0 / (time.time() - fps_time)), (10, 10),  cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
         print (image.shape)
-        outVid.write(image)
-        #cv2.imshow('tf-pose-estimation result', image)
+        #outVid.write(image)
+        cv2.imshow('tf-pose-estimation result', image)
         fps_time = time.time()
         if cv2.waitKey(1) == 27:
             break
